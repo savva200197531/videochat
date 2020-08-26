@@ -1,8 +1,9 @@
 <template>
-  <div id="logout">
+  <div id="logout" class="ml-auto">
     <b-button
         @click="logout"
-        class="bg-primary ml-2"
+        class="button bg-primary ml-auto"
+        v-if="userDetails.userId"
     >
       Выйти
     </b-button>
@@ -10,11 +11,16 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: "Logout",
   data: () => ({}),
+  computed: {
+    ...mapState('storage', [
+      'userDetails'
+    ])
+  },
   methods: {
     ...mapActions('storage', [
         'userLogout'
@@ -26,6 +32,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
 
 </style>
