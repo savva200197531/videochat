@@ -6,8 +6,8 @@
         <span>ideo Chat</span>
       </b-navbar-brand>
       <logout/>
-      <b-button @click="goRegister" v-if="this.$router.currentRoute.name === 'Login'" class="ml-auto bg-primary">Регистрация</b-button>
-      <b-button @click="goLogin" v-else class="ml-auto bg-primary">Войти</b-button>
+      <b-button @click="goRegister" v-if="this.$router.currentRoute.name === 'Login'" class="ml-2 bg-primary">Регистрация</b-button>
+      <b-button @click="goLogin" v-else class="ml-2 bg-primary">Войти</b-button>
     </b-navbar>
   </div>
 </template>

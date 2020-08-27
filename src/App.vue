@@ -30,6 +30,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="sass">
+.list-group-item
+  border: none
 </style>

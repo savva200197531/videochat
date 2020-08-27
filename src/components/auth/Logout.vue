@@ -1,8 +1,9 @@
 <template>
   <div id="logout" class="ml-auto">
     <b-button
+        variant="danger"
         @click="logout"
-        class="button bg-primary ml-auto"
+        class="button ml-auto"
         v-if="userDetails.userId"
     >
       Выйти

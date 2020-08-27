@@ -3,15 +3,15 @@ import VueRouter from 'vue-router'
 import Register from '@/components/auth/Register';
 import Login from '@/components/auth/Login';
 import MainPage from '@/components/videochat/MainPage';
-import UserList from '@/components/users/UserList';
+import MainWrapperPage from '@/components/users/MainWrapperPage';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'UserList',
-    component: UserList,
+    name: 'MainWrapperPage',
+    component: MainWrapperPage,
   },
   {
     path: '/chat',

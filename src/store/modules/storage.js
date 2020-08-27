@@ -5,7 +5,40 @@ import Vue from 'vue'
 const state = {
   userDetails: {},
   users: {},
-  messages: {}
+  messages: {
+    userId1: {
+      userName: 'Savva',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+    userId2: {
+      userName: 'Anton',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+    userId3: {
+      userName: 'Andrew',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+    userId4: {
+      userName: 'Polina',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+    userId5: {
+      userName: 'Gosha',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+    userId6: {
+      userName: 'Gosha',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+    userId7: {
+      userName: 'Gosha',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+    userId8: {
+      userName: 'Gosha',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
+    },
+  }
 }
 
 const mutations = {
