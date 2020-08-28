@@ -1,5 +1,5 @@
 <template>
-  <div id="user-info">
+  <div id="user-info" class="user-info">
     <b-row class="px-2 py-2 bg-light shadow-sm" no-gutters>
       <b-col>
         <b-avatar
@@ -33,6 +33,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
 
 </style>

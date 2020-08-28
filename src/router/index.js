@@ -4,14 +4,29 @@ import Register from '@/components/auth/Register';
 import Login from '@/components/auth/Login';
 import MainPage from '@/components/videochat/MainPage';
 import MainWrapperPage from '@/components/users/MainWrapperPage';
+import CurrentUser from '@/components/users/CurrentUser';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: `/`,
     name: 'MainWrapperPage',
     component: MainWrapperPage,
+    children: [
+      // {
+      //   path: '',
+      //   component: UserHome
+      // },
+      {
+        path: '',
+        component: CurrentUser
+      },
+      // {
+      //   path: 'posts',
+      //   component: UserPosts
+      // }
+    ]
   },
   {
     path: '/chat',

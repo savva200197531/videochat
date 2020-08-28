@@ -1,30 +1,25 @@
 <template>
-  <div id="chat-page" class="border">
-    <user-info/>
-    <display-messages/>
+  <b-col cols="8" id="chat-page">
+    <current-user/>
     <text-field/>
-  </div>
+  </b-col>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import UserInfo from '@/components/users/UserInfo';
-import DisplayMessages from '@/components/chat/DisplayMessages';
 import TextField from '@/components/chat/TextField';
+import CurrentUser from '@/components/users/CurrentUser';
 
 export default {
   name: "ChatPage",
   components: {
-    UserInfo,
-    DisplayMessages,
-    TextField
+    TextField,
+    CurrentUser
   },
-  data: () => ({
-
-  }),
+  data: () => ({}),
   computed: {
     ...mapState('storage', [
-        'messages'
+      'messages'
     ])
   }
 }

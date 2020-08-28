@@ -5,6 +5,7 @@ import Vue from 'vue'
 const state = {
   userDetails: {},
   users: {},
+  usersOnline: {},
   messages: {
     userId1: {
       userName: 'Savva',
@@ -58,8 +59,7 @@ const actions = {
     const email = payload.email
     const password = payload.password
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(res => {
-        console.log(res)
+      .then(() => {
         let userId = firebase.auth().currentUser.uid
         firebase.database().ref('users/' + userId).set({
           name: payload.name,
@@ -67,24 +67,23 @@ const actions = {
           online: true
         })
       })
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
   },
   userLogin(userInfo, payload) {
     const email = payload.email
     const password = payload.password
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(res => console.log(res))
-      .catch(error => console.log(error));
+      .then(() => console.log('user login'))
+      .catch(error => console.error(error));
   },
   userLogout() {
     firebase.auth().signOut()
-      .then(() => console.log('logout'))
-      .catch(error => console.log(error));
+      .then(() => console.log('user logout'))
+      .catch(error => console.error(error));
   },
   handleOnAuthStateChanged({ commit, dispatch }) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user)
         let userId = firebase.auth().currentUser.uid
         firebase.database().ref('users/' + userId).once('value', snapshot => {
           let userDetails = snapshot.val()
@@ -139,7 +138,23 @@ const actions = {
 
 const getters = {
   users: state => {
-    return state.users
+    let usersFiltered = {}
+    Object.keys(state.users).forEach(key => {
+      if (key !== state.userDetails.userId) {
+        usersFiltered[key] = state.users[key]
+      }
+    })
+    state.usersOnline = usersFiltered
+    return usersFiltered
+  },
+  usersOnline: state => {
+    let usersFiltered = []
+    Object.values(state.usersOnline).map(user => {
+      if (user.online === true) {
+        usersFiltered.push(user)
+      }
+    })
+    return usersFiltered
   }
 }
 

@@ -33,9 +33,9 @@ name: "TextField"
 </script>
 
 <style lang="sass" scoped>
-.textarea
-  border-bottom-right-radius: 0
-  border-bottom-left-radius: 0
-  border-bottom: 0
-  border-left: 0
+//.textarea
+//  border-bottom-right-radius: 0
+//  border-bottom-left-radius: 0
+//  border-bottom: 0
+//  border-left: 0
 </style>

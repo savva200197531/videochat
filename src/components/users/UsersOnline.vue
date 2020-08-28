@@ -1,12 +1,12 @@
 <template>
-  <b-col class="users-list shadow-sm" cols="2">
+  <b-col id="users-online" class="users-online shadow-sm">
     <b-list-group class="users__list-group">
-      <b-list-group-item variant="light" class="font-weight-bolder">Личные сообщения</b-list-group-item>
+      <b-list-group-item variant="light" class="font-weight-bolder">Активные контакты</b-list-group-item>
       <b-list-group-item
           class="user text-dark"
           variant="light"
           href="#"
-          v-for="(user, idx) in users"
+          v-for="(user, idx) in usersOnline"
           :key="idx"
       >
         {{ user.name }}
@@ -19,21 +19,15 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: "UsersList",
+  name: "UsersOnline",
   computed: {
     ...mapGetters('storage', [
-      'users'
+      'usersOnline'
     ])
   },
 }
 </script>
 
-<style lang="sass">
-.users__list-group
-  border-radius: 0
-  height: calc(100vh - 90px)
-  overflow-y: auto
+<style lang="sass" scoped>
 
-.users-list
-  z-index: 1
 </style>
