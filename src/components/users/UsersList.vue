@@ -1,18 +1,16 @@
 <template>
-  <b-col class="users-list shadow-sm" cols="2">
-    <b-list-group class="users__list-group">
-      <b-list-group-item variant="light" class="font-weight-bolder">Личные сообщения</b-list-group-item>
-      <b-list-group-item
-          class="user text-dark"
-          variant="light"
-          href="#"
-          v-for="(user, idx) in users"
-          :key="idx"
-      >
-        {{ user.name }}
-      </b-list-group-item>
-    </b-list-group>
-  </b-col>
+  <b-list-group class="users__list-group">
+    <b-list-group-item variant="light" class="font-weight-bolder">Личные сообщения</b-list-group-item>
+    <b-list-group-item
+        class="user text-dark"
+        variant="light"
+        v-for="(user, key) in users"
+        :href="'/user/' + key"
+        :key="key"
+    >
+      {{ user.name }}
+    </b-list-group-item>
+  </b-list-group>
 </template>
 
 <script>
@@ -20,6 +18,9 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: "UsersList",
+  data: () => ({
+    route: '1'
+  }),
   computed: {
     ...mapGetters('storage', [
       'users'
@@ -33,7 +34,4 @@ export default {
   border-radius: 0
   height: calc(100vh - 90px)
   overflow-y: auto
-
-.users-list
-  z-index: 1
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <div id="main-page">
-    <h1>main page</h1>
+  <div id="current-user-video">
+    <h1>Video chat</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MainPage"
+  name: "CurrentUserVideo"
 }
 </script>
 

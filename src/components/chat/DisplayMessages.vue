@@ -9,7 +9,7 @@
               :key="idx"
               :class="{'your-message': message.userName === 'Savva'}"
           >
-            {{ message.userName }}: {{ message.message }}
+            {{ message }}
           </b-list-group-item>
         </b-list-group>
       </b-col>
@@ -18,14 +18,31 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: "DisplayMessages",
   computed: {
     ...mapState('storage', [
-      'messages'
+      'messages',
+      'userDetails'
+    ]),
+    otherUserDetails() {
+      return this.$store.state.storage.users[this.$route.params.otherUserId]
+    }
+  },
+  methods: {
+    ...mapActions('storage', [
+        'firebaseGetMessages',
+        'firebaseStopGettingMessages'
     ])
+  },
+  mounted() {
+    this.firebaseGetMessages(this.$route.params.otherUserId)
+  },
+
+  destroyed() {
+    this.firebaseStopGettingMessages()
   }
 }
 </script>

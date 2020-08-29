@@ -2,44 +2,12 @@ import firebase from 'firebase';
 
 import Vue from 'vue'
 
+let messagesRef;
+
 const state = {
   userDetails: {},
   users: {},
-  usersOnline: {},
-  messages: {
-    userId1: {
-      userName: 'Savva',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-    userId2: {
-      userName: 'Anton',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-    userId3: {
-      userName: 'Andrew',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-    userId4: {
-      userName: 'Polina',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-    userId5: {
-      userName: 'Gosha',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-    userId6: {
-      userName: 'Gosha',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-    userId7: {
-      userName: 'Gosha',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-    userId8: {
-      userName: 'Gosha',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet iste laudantium libero vel voluptas.'
-    },
-  }
+  messages: {}
 }
 
 const mutations = {
@@ -52,6 +20,12 @@ const mutations = {
   updateUser(state, payload) {
     Object.assign(state.users[payload.userId], payload.userDetails)
   },
+  addMessage(state, payload) {
+    Vue.set(state.messages, payload.messageId, payload.messageDetails)
+  },
+  clearMessages(state) {
+    state.messages = {}
+  }
 }
 
 const actions = {
@@ -81,7 +55,7 @@ const actions = {
       .then(() => console.log('user logout'))
       .catch(error => console.error(error));
   },
-  handleOnAuthStateChanged({ commit, dispatch }) {
+  handleOnAuthStateChanged({ commit, state, dispatch }) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         let userId = firebase.auth().currentUser.uid
@@ -134,6 +108,38 @@ const actions = {
       })
     })
   },
+  firebaseGetMessages({ commit }, otherUserId) {
+    setTimeout(() => {
+      let userId = state.userDetails.userId
+      console.log(userId)
+      console.log(otherUserId)
+      messagesRef = firebase.database().ref('chats/' + userId + '/' + otherUserId)
+      messagesRef.on('child_added', snapshot => {
+        console.log('1')
+        let messageDetails = snapshot.val()
+        let messageId = snapshot.key
+        commit('addMessage', {
+          messageId,
+          messageDetails
+        })
+      })
+    }, 5000)
+  },
+  firebaseStopGettingMessages({ commit }) {
+    if (messagesRef) {
+      messagesRef.off('child_added')
+      commit('clearMessages')
+    }
+  },
+  firebaseSendMessage(object, payload) {
+    firebase.database()
+      .ref('chats/' + state.userDetails.userId + '/' + payload.otherUserId)
+      .push(payload.message)
+    payload.message.from = 'them'
+    firebase.database()
+      .ref('chats/' + payload.otherUserId + '/' + state.userDetails.userId)
+      .push(payload.message)
+  },
 }
 
 const getters = {
@@ -144,14 +150,13 @@ const getters = {
         usersFiltered[key] = state.users[key]
       }
     })
-    state.usersOnline = usersFiltered
     return usersFiltered
   },
   usersOnline: state => {
-    let usersFiltered = []
-    Object.values(state.usersOnline).map(user => {
-      if (user.online === true) {
-        usersFiltered.push(user)
+    let usersFiltered = {}
+    Object.keys(state.users).forEach(key => {
+      if (key !== state.userDetails.userId && state.users[key].online) {
+        usersFiltered[key] = state.users[key]
       }
     })
     return usersFiltered

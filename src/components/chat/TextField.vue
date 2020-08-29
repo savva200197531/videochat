@@ -8,6 +8,8 @@
             no-resize
             rows="4"
             class="textarea"
+            v-model="newMessage"
+            @keydown.enter="sendMessage"
         >
         </b-textarea>
       </b-col>
@@ -15,6 +17,7 @@
         <b-button
             variant="primary"
             class="send-btn"
+            @click="sendMessage"
         >
           Отправить
         </b-button>
@@ -27,15 +30,35 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
-name: "TextField"
+  name: "TextField",
+  data: () => ({
+    newMessage: '',
+  }),
+  computed: {
+    ...mapState('storage', [
+        'userDetails'
+    ])
+  },
+  methods: {
+    ...mapActions('storage', [
+        'firebaseSendMessage'
+    ]),
+    sendMessage() {
+      this.firebaseSendMessage({
+        message: {
+          text: this.newMessage,
+          from: this.userDetails.name,
+        },
+        otherUserId: this.$route.params.otherUserId
+      })
+    }
+  }
 }
 </script>
 
 <style lang="sass" scoped>
-//.textarea
-//  border-bottom-right-radius: 0
-//  border-bottom-left-radius: 0
-//  border-bottom: 0
-//  border-left: 0
+
 </style>

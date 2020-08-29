@@ -2,45 +2,44 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Register from '@/components/auth/Register';
 import Login from '@/components/auth/Login';
-import MainPage from '@/components/videochat/MainPage';
 import MainWrapperPage from '@/components/users/MainWrapperPage';
 import CurrentUser from '@/components/users/CurrentUser';
+import Plug from '@/components/chat/Plug';
+import CurrentUserVideo from '@/components/videochat/CurrentUserVideo';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: `/`,
-    name: 'MainWrapperPage',
+    path: '/user',
+    name: 'mainWrapperPage',
     component: MainWrapperPage,
     children: [
-      // {
-      //   path: '',
-      //   component: UserHome
-      // },
       {
         path: '',
-        component: CurrentUser
+        name: 'plug',
+        component: Plug,
       },
-      // {
-      //   path: 'posts',
-      //   component: UserPosts
-      // }
+      {
+        path: ':otherUserId',
+        name: 'chat',
+        component: CurrentUser,
+      },
+      {
+        path: 'call/:id',
+        name: 'call',
+        component: CurrentUserVideo,
+      },
     ]
   },
   {
-    path: '/chat',
-    name: 'MainPage',
-    component: MainPage,
-  },
-  {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: Login,
   },
   {
     path: '/register',
-    name: 'Register',
+    name: 'register',
     component: Register,
   },
 ]

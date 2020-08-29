@@ -21,7 +21,7 @@ export default {
     this.handleOnAuthStateChanged();
     // firebase.auth().onAuthStateChanged(user => {
     //   if (user) {
-    //     this.$router.replace('/').catch(() => {})
+    //     this.$router.replace('/user').catch(() => {})
     //   } else {
     //     this.$router.replace('/register').catch(() => {})
     //   }
