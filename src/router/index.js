@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Register from '@/components/auth/Register';
 import Login from '@/components/auth/Login';
 import MainWrapperPage from '@/components/users/MainWrapperPage';
-import CurrentUser from '@/components/users/CurrentUser';
+import CurrentUser from '@/components/users/CurrentUser'
 import Plug from '@/components/chat/Plug';
 import CurrentUserVideo from '@/components/videochat/CurrentUserVideo';
 

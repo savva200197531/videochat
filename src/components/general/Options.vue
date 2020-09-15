@@ -15,21 +15,17 @@
         {{ option }}
       </b-dropdown-item>
     </b-nav-item-dropdown>
+
   </div>
 </template>
 
 <script>
 export default {
   name: "Options",
-  data: () => ({}),
-  props: {
-    optionsArr: {
-      type: Array,
-      default() {
-        return [ `Настройки`, 'Тема', 'Потом придумаю', 'Потом придумаю' ]
-      }
-    }
-  },
+  data: () => ({
+    optionsArr: [ 'Настройки', 'Тема', 'Потом придумаю', 'Потом придумаю' ]
+  }),
+  props: {},
   methods: {}
 }
 </script>

@@ -19,13 +19,6 @@ export default {
   },
   mounted() {
     this.handleOnAuthStateChanged();
-    // firebase.auth().onAuthStateChanged(user => {
-    //   if (user) {
-    //     this.$router.replace('/user').catch(() => {})
-    //   } else {
-    //     this.$router.replace('/register').catch(() => {})
-    //   }
-    // })
   }
 }
 </script>

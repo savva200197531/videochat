@@ -66,6 +66,7 @@ const actions = {
             email: userDetails.email,
             userId: userId
           })
+        }).then(() => {
         })
         dispatch('firebaseUpdateUser', {
           userId: userId,
@@ -83,6 +84,18 @@ const actions = {
         })
         commit('setUserDetails', {})
       }
+    })
+  },
+  firebaseGetMessages({ commit, state }, otherUserId) {
+    const userId = state.userDetails.userId
+    messagesRef = firebase.database().ref('chats/' + userId + '/' + otherUserId)
+    messagesRef.on('child_added', snapshot => {
+      let messageDetails = snapshot.val()
+      let messageId = snapshot.key
+      commit('addMessage', {
+        messageId,
+        messageDetails
+      })
     })
   },
   firebaseUpdateUser(object, payload) {
@@ -107,23 +120,6 @@ const actions = {
         userDetails
       })
     })
-  },
-  firebaseGetMessages({ commit }, otherUserId) {
-    setTimeout(() => {
-      let userId = state.userDetails.userId
-      console.log(userId)
-      console.log(otherUserId)
-      messagesRef = firebase.database().ref('chats/' + userId + '/' + otherUserId)
-      messagesRef.on('child_added', snapshot => {
-        console.log('1')
-        let messageDetails = snapshot.val()
-        let messageId = snapshot.key
-        commit('addMessage', {
-          messageId,
-          messageDetails
-        })
-      })
-    }, 5000)
   },
   firebaseStopGettingMessages({ commit }) {
     if (messagesRef) {
@@ -161,6 +157,9 @@ const getters = {
     })
     return usersFiltered
   }
+  // userDetails: state => {
+  //
+  // }
 }
 
 export default {

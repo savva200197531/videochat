@@ -15,14 +15,10 @@
 <script>
 export default {
   name: "Language",
-  props: {
-    langArray: {
-      type: Array,
-      default() {
-        return ['En', 'Ru', 'Es', 'Fa']
-      }
-    }
-  }
+  props: {},
+  data: () => ({
+    langArray: ['En', 'Ru', 'Es', 'Fa']
+  })
 }
 </script>
 

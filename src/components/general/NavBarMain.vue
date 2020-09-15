@@ -38,14 +38,7 @@ export default {
     Language,
     Options
   },
-  props: {
-    langArray: {
-      type: Array,
-      default() {
-        return [ 'EN', 'ES', 'RU', 'FA' ]
-      }
-    }
-  },
+  props: {},
   data: () => ({}),
   methods: {
     goRegister() {
