@@ -6,7 +6,11 @@
             href="#"
         >
         </b-avatar>
-        {{ name }} {{ surname }}
+        {{ otherUserDetails.name }}
+        <span
+            class="user-online"
+            :class="{'online': otherUserDetails.online}">
+        </span>
       </b-col>
       <b-col class="text-right">
         <b-avatar
@@ -24,15 +28,30 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: "UserInfo",
-  data: () => ({
-    name: 'Igor',
-    surname: 'Putin'
-  })
+  computed: {
+    ...mapState('storage', [
+      'messages',
+      'userDetails'
+    ]),
+    otherUserDetails() {
+      if (this.$store.state.storage.users[this.$route.params.otherUserId]) {
+        return this.$store.state.storage.users[this.$route.params.otherUserId]
+      } else {
+        return ''
+      }
+
+    }
+  },
+  components: {},
+  data: () => ({})
 }
 </script>
 
 <style lang="sass" scoped>
+.loading
 
 </style>

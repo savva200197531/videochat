@@ -13,17 +13,18 @@
         >
         </b-textarea>
       </b-col>
-      <b-col cols="2" class="ml-2">
+      <b-col cols="2" class="mx-2">
         <b-button
             variant="primary"
             class="send-btn"
             @click="sendMessage"
+            :disabled="newMessage.trim().length === 0"
         >
           Отправить
         </b-button>
-        <b-button class="ml-1 bg-transparent border-secondary">
-          <b-icon icon="emoji-smile" variant="secondary"></b-icon>
-        </b-button>
+<!--        <b-button class="ml-1 bg-transparent border-secondary">-->
+<!--          <b-icon icon="emoji-smile" variant="secondary"></b-icon>-->
+<!--        </b-button>-->
       </b-col>
     </b-row>
   </div>
@@ -47,18 +48,22 @@ export default {
         'firebaseSendMessage'
     ]),
     sendMessage() {
-      this.firebaseSendMessage({
-        message: {
-          text: this.newMessage,
-          from: this.userDetails.name,
-        },
-        otherUserId: this.$route.params.otherUserId
-      })
+      if (this.newMessage.trim().length > 0) {
+        this.firebaseSendMessage({
+          message: {
+            text: this.newMessage,
+            from: this.userDetails.name,
+            userId: this.userDetails.userId
+          },
+          otherUserId: this.$route.params.otherUserId
+        })
+      }
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-
+.send-btn
+  width: 100%
 </style>

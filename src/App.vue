@@ -26,4 +26,19 @@ export default {
 <style lang="sass">
 .list-group-item
   border: none
+
+.user-online
+  background: grey
+  width: 10px
+  height: 10px
+  display: inline-block
+  border-radius: 50%
+
+.online
+  background: #39ea39
+
+.users__list-group
+  border-radius: 0
+  height: calc(100vh - 90px)
+  overflow-y: auto
 </style>

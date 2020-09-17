@@ -5,33 +5,43 @@
         class="user text-dark"
         variant="light"
         v-for="(user, key) in users"
-        :href="'/user/' + key"
+        :href="`/${userDetails.userId}/` + key"
         :key="key"
     >
-      {{ user.name }}
+      <span>{{ user.name }}</span>
+      <span
+          class="user-online"
+          :class="{'online': user.online}">
+      </span>
     </b-list-group-item>
   </b-list-group>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
+
 
 export default {
   name: "UsersList",
+  components: {},
   data: () => ({
     route: '1'
   }),
   computed: {
     ...mapGetters('storage', [
-      'users'
+      'users',
+    ]),
+    ...mapState('storage', [
+      'userDetails'
     ])
   },
 }
 </script>
 
-<style lang="sass">
-.users__list-group
-  border-radius: 0
-  height: calc(100vh - 90px)
-  overflow-y: auto
+<style lang="sass" scoped>
+.user
+  display: flex
+  align-items: center
+  justify-content: space-between
+
 </style>

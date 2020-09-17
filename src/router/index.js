@@ -5,31 +5,31 @@ import Login from '@/components/auth/Login';
 import MainWrapperPage from '@/components/users/MainWrapperPage';
 import CurrentUser from '@/components/users/CurrentUser'
 import Plug from '@/components/chat/Plug';
-import CurrentUserVideo from '@/components/videochat/CurrentUserVideo';
+// import CurrentUserVideo from '@/components/videochat/CurrentUserVideo';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/user',
+    path: '/',
     name: 'mainWrapperPage',
     component: MainWrapperPage,
     children: [
       {
-        path: '',
-        name: 'plug',
+        path: '/news',
+        name: 'news',
         component: Plug,
       },
       {
-        path: ':otherUserId',
+        path: ':userId/:otherUserId',
         name: 'chat',
         component: CurrentUser,
       },
-      {
-        path: 'call/:id',
-        name: 'call',
-        component: CurrentUserVideo,
-      },
+      // {
+      //   path: 'call/:otherUserId',
+      //   name: 'call',
+      //   component: CurrentUserVideo,
+      // },
     ]
   },
   {

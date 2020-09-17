@@ -1,7 +1,6 @@
 import firebase from 'firebase';
-
 import Vue from 'vue'
-
+import router from '@/router';
 let messagesRef;
 
 const state = {
@@ -66,7 +65,6 @@ const actions = {
             email: userDetails.email,
             userId: userId
           })
-        }).then(() => {
         })
         dispatch('firebaseUpdateUser', {
           userId: userId,
@@ -75,6 +73,9 @@ const actions = {
           }
         })
         dispatch('firebaseGetUsers')
+        if (router.currentRoute.name !== 'news') {
+          router.push('/news')
+        }
       } else {
         dispatch('firebaseUpdateUser', {
           userId: state.userDetails.userId,
@@ -83,6 +84,9 @@ const actions = {
           }
         })
         commit('setUserDetails', {})
+        if (router.currentRoute.name !== 'register') {
+          router.push('/register')
+        }
       }
     })
   },
@@ -131,7 +135,7 @@ const actions = {
     firebase.database()
       .ref('chats/' + state.userDetails.userId + '/' + payload.otherUserId)
       .push(payload.message)
-    payload.message.from = 'them'
+    console.log(payload)
     firebase.database()
       .ref('chats/' + payload.otherUserId + '/' + state.userDetails.userId)
       .push(payload.message)
@@ -157,9 +161,6 @@ const getters = {
     })
     return usersFiltered
   }
-  // userDetails: state => {
-  //
-  // }
 }
 
 export default {
