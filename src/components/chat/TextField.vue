@@ -1,7 +1,7 @@
 <template>
   <div id="text-field">
     <b-row
-        class="text-field"
+        class="text-field px-2 pb-2"
         no-gutters>
       <b-col>
         <b-textarea
@@ -13,7 +13,7 @@
         >
         </b-textarea>
       </b-col>
-      <b-col cols="2" class="mx-2">
+      <b-col cols="2" class="ml-2">
         <b-button
             variant="primary"
             class="send-btn"
@@ -58,6 +58,7 @@ export default {
           otherUserId: this.$route.params.otherUserId
         })
       }
+      this.newMessage = ''
     }
   }
 }

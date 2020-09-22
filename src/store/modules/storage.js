@@ -73,9 +73,6 @@ const actions = {
           }
         })
         dispatch('firebaseGetUsers')
-        if (router.currentRoute.name !== 'news') {
-          router.push('/news')
-        }
       } else {
         dispatch('firebaseUpdateUser', {
           userId: state.userDetails.userId,

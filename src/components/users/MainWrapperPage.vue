@@ -31,10 +31,12 @@ export default {
     NavBarMain,
     UsersList,
     VFooter,
-    UsersOnline
+    UsersOnline,
   },
   props: {},
-  data: () => ({}),
+  data: () => ({
+    anton: 'Anton'
+  }),
   methods: {}
 }
 </script>

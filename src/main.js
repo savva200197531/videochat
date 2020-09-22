@@ -27,8 +27,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.database();
-
 Vue.config.productionTip = false
 
 new Vue({
@@ -36,5 +34,3 @@ new Vue({
   store,
   render: h => h(App),
 }).$mount('#app')
-
-export default db;

@@ -5,7 +5,7 @@
         class="user text-dark"
         variant="light"
         v-for="(user, key) in usersOnline"
-        :href="'/user/' + key"
+        :href="`/${userDetails.userId}/` + key"
         :key="key"
     >
       {{ user.name }}
@@ -14,13 +14,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
   name: "UsersOnline",
   computed: {
     ...mapGetters('storage', [
       'usersOnline'
+    ]),
+    ...mapState('storage', [
+      'userDetails'
     ])
   },
 }

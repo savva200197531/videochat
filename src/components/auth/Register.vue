@@ -156,6 +156,7 @@ export default {
         password: this.password
       }
       this.userRegister(userInfo)
+      this.$router.push('/')
     },
     onReset(evt) {
       evt.preventDefault()

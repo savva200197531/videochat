@@ -14,6 +14,7 @@ const routes = [
     path: '/',
     name: 'mainWrapperPage',
     component: MainWrapperPage,
+    redirect: '/news',
     children: [
       {
         path: '/news',
@@ -41,6 +42,9 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register,
+    // redirect: () => {
+    //   if ()
+    // }
   },
 ]
 

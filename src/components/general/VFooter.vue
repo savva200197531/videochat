@@ -18,5 +18,4 @@ export default {
 <style lang="sass" scoped>
 .footer
   width: 100vw
-  height: 33px
 </style>
