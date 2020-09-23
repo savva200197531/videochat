@@ -14,13 +14,13 @@
       </b-col>
       <b-col class="text-right">
         <b-avatar
-            href="#"
+            :href="'/chat' + '/video/' + userDetails.userId + '/' + this.$route.params.otherUserId"
             variant="success"
             size="40px">
-          <b-icon
-              style="width: 20px; height: 20px"
-              icon="telephone">
-          </b-icon>
+            <b-icon
+                style="width: 20px; height: 20px"
+                icon="telephone">
+            </b-icon>
         </b-avatar>
       </b-col>
     </b-row>

@@ -5,7 +5,7 @@
         class="user text-dark"
         variant="light"
         v-for="(user, key) in users"
-        :href="`/${userDetails.userId}/` + key"
+        :href="'/chat/' + userDetails.userId + '/' + key"
         :key="key"
     >
       <span>{{ user.name }}</span>
