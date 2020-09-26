@@ -132,7 +132,6 @@ const actions = {
     firebase.database()
       .ref('chats/' + state.userDetails.userId + '/' + payload.otherUserId)
       .push(payload.message)
-    console.log(payload)
     firebase.database()
       .ref('chats/' + payload.otherUserId + '/' + state.userDetails.userId)
       .push(payload.message)
