@@ -1,6 +1,11 @@
 <template>
   <div id="video-chat" class="video-chat">
-    <b-row class="video" no-gutters>
+    <b-row align-v="center" class="load video bg-light" no-gutters v-if="hideSpinner">
+      <b-col md="12" class="text-center">
+        <b-spinner class="load" variant="primary" label="Spinning"></b-spinner>
+      </b-col>
+    </b-row>
+    <b-row class="video" no-gutters v-else>
       <b-col class="video-grid">
         <div class="video-grid__item">
           <video playsInline muted ref="userVideo" autoPlay/>
@@ -27,7 +32,7 @@
 
 <script>
 import io from 'socket.io-client'
-// import socket from 'socket.io'
+import { mapState } from 'vuex'
 import Peer from 'simple-peer'
 
 export default {
@@ -45,12 +50,17 @@ export default {
     callAccepted: false,
     // other
     callPeerButton: false,
-    usersFiltered: []
+    usersFiltered: [],
+    hideSpinner: false
   }),
-  computed: {},
+  computed: {
+    ...mapState('storage', [
+        'userDetails'
+    ])
+  },
   methods: {
     click() {
-      // this.setVideo()
+      console.log(this.userDetails.userId)
     },
     callPeer(id) {
       const peer = new Peer({
@@ -100,27 +110,30 @@ export default {
       peer.signal(this.callerSignal)
     },
     setVideo() {
-      // chat/video/1ogu7FCsztXPJKRkyjQB2AwwOhG3/jGAQHzKsERWDGnjSFEknivXcCWJ3
-      this.socket = io.connect('http://localhost:8000')
-      navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
-        this.stream = stream
-        console.log(this.stream)
-        if (this.$refs.userVideo) {
-          this.$refs.userVideo.srcObject = stream
-        }
-      })
-      this.socket.on("yourID", (id) => {
-        this.yourID = id;
-      })
-      this.socket.on("allUsers", (users) => {
-        this.users = users;
-      })
-      this.socket.on("hey", (data) => {
-        console.log(data)
-        this.receivingCall = true
-        this.caller = data.from
-        this.callerSignal = data.signal
-      })
+      setInterval(() => {})
+      if (this.userDetails.userId) {
+        this.socket = io.connect('http://localhost:8000')
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+          this.stream = stream
+          console.log(this.stream)
+          if (this.$refs.userVideo) {
+            this.$refs.userVideo.srcObject = stream
+          }
+        })
+        this.socket.on("yourID", () => {
+          console.log(this)
+          this.yourID = this.userDetails.userId;
+        })
+        this.socket.on("allUsers", (users) => {
+          this.users = users;
+        })
+        this.socket.on("hey", (data) => {
+          console.log(data)
+          this.receivingCall = true
+          this.caller = data.from
+          this.callerSignal = data.signal
+        })
+      }
     },
     // filterUsers() {
     //   const getUsers = setInterval(() => {
@@ -140,9 +153,17 @@ export default {
     //   }, 100)
     // }
   },
+  watch: {},
   mounted() {
-    this.setVideo()
-    // this.filterUsers();
+    const setVideo = setInterval(() => {
+      if (this.userDetails.userId) {
+        this.setVideo()
+        this.hideSpinner = false
+        clearInterval(setVideo)
+      } else {
+        this.hideSpinner = true
+      }
+    }, 1000)
   }
 }
 </script>
