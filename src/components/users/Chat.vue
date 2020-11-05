@@ -1,6 +1,6 @@
 <template>
   <div id="current-user">
-    <router-view/>
+    <router-view :key="this.$route.params.otherUserId"/>
     <text-field/>
   </div>
 </template>

@@ -6,7 +6,8 @@ import MainWrapperPage from '@/components/users/MainWrapperPage';
 import Chat from '@/components/users/Chat'
 import News from '@/components/chat/News';
 import VideoChat from '@/components/video/VideoChat';
-import CurrentUser from '@/components/users/CurrentUser';
+import DisplayMessages from '@/components/chat/DisplayMessages';
+import Error404 from '@/components/general/Error404';
 // import CurrentUserVideo from '@/components/videochat/CurrentUserVideo';
 
 Vue.use(VueRouter)
@@ -30,8 +31,8 @@ const routes = [
         children: [
           {
             path: ':userId/:otherUserId',
-            name: 'currentUser',
-            component: CurrentUser
+            name: 'displayMessages',
+            component: DisplayMessages
           },
           {
             path: 'video/:userId/:otherUserId',
@@ -51,9 +52,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register,
-    // redirect: () => {
-    //   if ()
-    // }
+  },
+  {
+    path: '*',
+    name: '404',
+    component: Error404,
   },
 ]
 

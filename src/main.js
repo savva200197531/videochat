@@ -4,7 +4,6 @@ import router from '@/router';
 import store from '@/store';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Vuelidate from 'vuelidate'
-import indexJS from './components/video/index'
 
 
 Vue.use(Vuelidate)
@@ -33,6 +32,5 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  indexJS,
   render: h => h(App),
 }).$mount('#app')

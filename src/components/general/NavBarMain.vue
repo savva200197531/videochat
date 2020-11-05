@@ -1,7 +1,7 @@
 <template>
   <div id="nav-bar-main">
     <b-navbar toggleable="lg" type="light" variant="light">
-      <b-navbar-brand href="#">
+      <b-navbar-brand :to="'/'">
         <b-img class="vue-logo" src="https://www.futuretech.res.in/wp-content/uploads/2019/05/2000px-Vue.js_Logo_2.svg_.png" width="30px"/>
         <span>ideo Chat</span>
       </b-navbar-brand>

@@ -1,6 +1,6 @@
 <template>
   <div id="video-chat" class="video-chat">
-    <b-row align-v="center" class="load video bg-light" no-gutters v-if="hideSpinner">
+    <b-row align-v="center" class="load video" no-gutters v-if="hideSpinner">
       <b-col md="12" class="text-center">
         <b-spinner class="load" variant="primary" label="Spinning"></b-spinner>
       </b-col>
@@ -15,8 +15,9 @@
         </div>
         <div class="video-grid__item">
           <span v-for="(user, key) in users" :key="key">
-            <b-button v-if="user !== yourID" @click="callPeer(user)">Call {{ user }}</b-button>
+            <b-button v-if="user !== userDetails.userId" @click="callPeer(key)">Call {{ key }}{{ user.name }}</b-button>
           </span>
+          <b-button @click="callPeer(userDetails.userId)">Call {{ userDetails.userId }}{{ userDetails.name }}</b-button>
         </div>
         <div class="video-grid__item">
           <div v-if="receivingCall">
@@ -32,7 +33,7 @@
 
 <script>
 import io from 'socket.io-client'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Peer from 'simple-peer'
 
 export default {
@@ -41,8 +42,8 @@ export default {
     // useRef
     socket: null,
     // useState
-    yourID: '',
-    users: {},
+    // yourID: '',
+    // users: {},
     stream: null,
     receivingCall: false,
     caller: '',
@@ -51,18 +52,31 @@ export default {
     // other
     callPeerButton: false,
     usersFiltered: [],
-    hideSpinner: false
+    hideSpinner: false,
+    video: true,
+    audio: true,
   }),
   computed: {
     ...mapState('storage', [
         'userDetails'
-    ])
+    ]),
+    ...mapGetters('storage', [
+        'users'
+    ]),
+    otherUserDetails() {
+      if (this.$store.state.storage.users[this.$route.params.otherUserId]) {
+        return this.$store.state.storage.users[this.$route.params.otherUserId]
+      } else {
+        return ''
+      }
+    }
   },
   methods: {
     click() {
-      console.log(this.userDetails.userId)
+      console.log(this.users)
     },
     callPeer(id) {
+      console.log(id)
       const peer = new Peer({
         initiator: true,
         trickle: false,
@@ -70,10 +84,11 @@ export default {
       })
 
       peer.on('signal', data => {
+        console.log('signal')
         this.socket.emit('callUser', {
           userToCall: id,
           signalData: data,
-          from: this.yourID,
+          from: this.userDetails.userId,
         })
       })
 
@@ -110,60 +125,66 @@ export default {
       peer.signal(this.callerSignal)
     },
     setVideo() {
-      setInterval(() => {})
       if (this.userDetails.userId) {
+        // [this.video, this.audio] = [true, true]
         this.socket = io.connect('http://localhost:8000')
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+        navigator.mediaDevices.getUserMedia({ video: this.video, audio: this.audio }).then(stream => {
           this.stream = stream
-          console.log(this.stream)
+          // console.log(this.stream)
           if (this.$refs.userVideo) {
             this.$refs.userVideo.srcObject = stream
           }
+        }).catch(error => {
+          console.error(error)
         })
-        this.socket.on("yourID", () => {
-          console.log(this)
-          this.yourID = this.userDetails.userId;
+
+        this.socket.emit("yourID", this.userDetails.userId);
+        Object.keys(this.users).forEach(key => {
+          this.socket.emit("allUsers", key);
         })
-        this.socket.on("allUsers", (users) => {
-          this.users = users;
-        })
-        this.socket.on("hey", (data) => {
-          console.log(data)
+      }
+    },
+    setVideo2() {
+      if (this.userDetails.userId) {
+        // this.socket.join(this.$route.params.otherUserId);
+        this.socket.on('hey', data => {
+          console.log('hey')
           this.receivingCall = true
           this.caller = data.from
           this.callerSignal = data.signal
         })
       }
-    },
-    // filterUsers() {
-    //   const getUsers = setInterval(() => {
-    //     let users = this.users
-    //     if (!users) {
-    //       console.log(users)
-    //     } else {
-    //       Object.keys(users).map(key => {
-    //         console.log(key)
-    //         if (key !== this.yourID) {
-    //           console.log(users)
-    //           this.usersFiltered.push(users)
-    //         }
-    //       })
-    //       clearInterval(getUsers)
-    //     }
-    //   }, 100)
-    // }
+    }
   },
   watch: {},
   mounted() {
     const setVideo = setInterval(() => {
       if (this.userDetails.userId) {
         this.setVideo()
+        this.setVideo2()
         this.hideSpinner = false
         clearInterval(setVideo)
       } else {
         this.hideSpinner = true
       }
     }, 1000)
+  },
+  destroyed() {
+    if (this.userDetails.userId) {
+      console.log('destroy');
+
+      [this.video, this.audio] = [false, false];
+      navigator.mediaDevices.getUserMedia({ video: this.video, audio: this.audio }).then(stream => {
+        this.stream = null
+        console.log(stream)
+        if (this.$refs.userVideo) {
+          this.$refs.userVideo.srcObject = this.stream
+        }
+      }).catch(error => {
+        console.error(error)
+      })
+      // this.setVideo();
+    }
   }
 }
 </script>
@@ -179,13 +200,13 @@ export default {
   display: grid
   grid-template-columns: repeat(2, 1fr)
   grid-template-rows: repeat(2, 1fr)
-  justify-items: center
+  //justify-items: center
 
 .video-grid__item
-  justify-self: stretch
+  //justify-self: stretch
   //border: 1px solid#000
-  align-self: stretch
-  background: #f8f9fa
+  //align-self: stretch
+  //background: #f8f9fa
 
 video
   max-width: 100%

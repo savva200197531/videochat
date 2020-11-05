@@ -5,13 +5,14 @@
         class="user text-dark"
         variant="light"
         v-for="(user, key) in users"
-        :href="'/chat/' + userDetails.userId + '/' + key"
+        :to="'/chat/' + userDetails.userId + '/' + key"
         :key="key"
     >
       <span>{{ user.name }}</span>
       <span
           class="user-online"
-          :class="{'online': user.online}">
+          :class="{'online': user.online}"
+      >
       </span>
     </b-list-group-item>
   </b-list-group>
@@ -35,12 +36,16 @@ export default {
       'userDetails'
     ])
   },
+  destroyed() {
+    console.log('1')
+  }
 }
 </script>
 
 <style lang="sass" scoped>
 .user
   display: flex
+  flex-wrap: wrap
   align-items: center
   justify-content: space-between
 

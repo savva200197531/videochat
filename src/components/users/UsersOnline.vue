@@ -5,7 +5,7 @@
         class="user text-dark"
         variant="light"
         v-for="(user, key) in usersOnline"
-        :href="'/chat/' + userDetails.userId + '/' + key"
+        :to="'/chat/' + userDetails.userId + '/' + key"
         :key="key"
     >
       {{ user.name }}
