@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d8c058d-465e-4c5d-9b8a-f254167a2489" name="Default Changelist" comment="add server">
+      <change afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/videochat/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Logout.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Register.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chat/DisplayMessages.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chat/News.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chat/TextField.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/Error404.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/Language.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/NavBarAuth.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/NavBarMain.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/Options.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/general/VFooter.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/users/Chat.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/users/MainWrapperPage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/users/UsersList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/users/UsersOnline.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/video/VideoChat.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modules/storage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modules/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1hty3mTS1Ik3bt74uCVRf6mGat5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\vue-projects\videochat-directory\server" />
+      <recent name="C:\vue-projects\videochat-directory\videochat" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\vue-projects\videochat-directory" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d8c058d-465e-4c5d-9b8a-f254167a2489" name="Default Changelist" comment="" />
+      <created>1600844485826</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600844485826</updated>
+      <workItem from="1600844486887" duration="14895000" />
+      <workItem from="1600929106756" duration="6549000" />
+      <workItem from="1601009923339" duration="634000" />
+      <workItem from="1601033705492" duration="2428000" />
+      <workItem from="1601039223188" duration="46000" />
+      <workItem from="1601042369317" duration="11640000" />
+      <workItem from="1601100099917" duration="1585000" />
+      <workItem from="1601104584501" duration="20106000" />
+      <workItem from="1601219700008" duration="1284000" />
+      <workItem from="1601223825694" duration="5417000" />
+      <workItem from="1601281767933" duration="4928000" />
+      <workItem from="1601305701008" duration="4742000" />
+      <workItem from="1601377644552" duration="2497000" />
+      <workItem from="1601465064795" duration="39000" />
+      <workItem from="1602073896249" duration="442000" />
+      <workItem from="1602432269800" duration="1616000" />
+      <workItem from="1602494811258" duration="7374000" />
+      <workItem from="1602565779202" duration="13552000" />
+      <workItem from="1602614705730" duration="1042000" />
+      <workItem from="1602655773738" duration="11669000" />
+      <workItem from="1602743718923" duration="9397000" />
+      <workItem from="1603714409699" duration="5605000" />
+      <workItem from="1603737021014" duration="4628000" />
+      <workItem from="1603768370135" duration="2444000" />
+      <workItem from="1603863868824" duration="17366000" />
+      <workItem from="1603952409824" duration="9065000" />
+      <workItem from="1604041501627" duration="1235000" />
+      <workItem from="1604063022305" duration="36000" />
+      <workItem from="1604063119406" duration="1624000" />
+      <workItem from="1604069329151" duration="114000" />
+      <workItem from="1604069456550" duration="1392000" />
+      <workItem from="1604071120906" duration="820000" />
+      <workItem from="1604514301639" duration="1291000" />
+      <workItem from="1604559707730" duration="2584000" />
+      <workItem from="1604582119704" duration="167000" />
+      <workItem from="1604582300603" duration="386000" />
+      <workItem from="1604582701861" duration="1715000" />
+      <workItem from="1604585165426" duration="886000" />
+    </task>
+    <task id="LOCAL-00001" summary="advance routing + add video chat component + start doing video chat">
+      <created>1600890157229</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600890157229</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add working video chat!!! + styles">
+      <created>1601140702476</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601140702476</updated>
+    </task>
+    <task id="LOCAL-00003" summary="try to customize video chat and add my id">
+      <created>1601232491834</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1601232491834</updated>
+    </task>
+    <task id="LOCAL-00004" summary="working on custom id in socket.io + add spa routing + stylization + remove and configure some components">
+      <created>1604580304262</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604580304262</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add server">
+      <created>1604580329456</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604580329456</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="advance routing + add video chat component + start doing video chat" />
+    <MESSAGE value="add working video chat!!! + styles" />
+    <MESSAGE value="try to customize video chat and add my id" />
+    <MESSAGE value="working on custom id in socket.io + add spa routing + stylization + remove and configure some components" />
+    <MESSAGE value="add server" />
+    <option name="LAST_COMMIT_MESSAGE" value="add server" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603906730505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603906730505" />
+    <state x="585" y="87" key="CommitChangelistDialog2" timestamp="1604582805073">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="87" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1604582805073" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1604584417266">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604584417266" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1604583050335">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604583050335" />
+    <state x="705" y="401" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1604580475136">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="705" y="401" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604580475136" />
+  </component>
+</project>
