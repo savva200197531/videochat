@@ -14,10 +14,10 @@
           <video playsInline ref="partnerVideo" autoPlay/>
         </div>
         <div class="video-grid__item">
-          <span v-for="(user, key) in users" :key="key">
+          <span v-for="(user, key) in usersOnline" :key="key">
             <b-button v-if="user !== userDetails.userId" @click="callPeer(key)">Call {{ key }}{{ user.name }}</b-button>
           </span>
-          <b-button @click="callPeer(userDetails.userId)">Call {{ userDetails.userId }}{{ userDetails.name }}</b-button>
+          <!--          <b-button @click="callPeer(userDetails.userId)">Call {{ userDetails.userId }}{{ userDetails.name }}</b-button>-->
         </div>
         <div class="video-grid__item">
           <div v-if="receivingCall">
@@ -39,17 +39,12 @@ import Peer from 'simple-peer'
 export default {
   name: "VideoChat",
   data: () => ({
-    // useRef
     socket: null,
-    // useState
-    // yourID: '',
-    // users: {},
     stream: null,
     receivingCall: false,
     caller: '',
     callerSignal: null,
     callAccepted: false,
-    // other
     callPeerButton: false,
     usersFiltered: [],
     hideSpinner: false,
@@ -58,10 +53,11 @@ export default {
   }),
   computed: {
     ...mapState('storage', [
-        'userDetails'
+      'userDetails'
     ]),
     ...mapGetters('storage', [
-        'users'
+      'users',
+      'usersOnline'
     ]),
     otherUserDetails() {
       if (this.$store.state.storage.users[this.$route.params.otherUserId]) {
@@ -76,7 +72,6 @@ export default {
       console.log(this.users)
     },
     callPeer(id) {
-      console.log(id)
       const peer = new Peer({
         initiator: true,
         trickle: false,
@@ -84,7 +79,6 @@ export default {
       })
 
       peer.on('signal', data => {
-        console.log('signal')
         this.socket.emit('callUser', {
           userToCall: id,
           signalData: data,
@@ -130,38 +124,27 @@ export default {
         this.socket = io.connect('http://localhost:8000')
         navigator.mediaDevices.getUserMedia({ video: this.video, audio: this.audio }).then(stream => {
           this.stream = stream
-          // console.log(this.stream)
           if (this.$refs.userVideo) {
             this.$refs.userVideo.srcObject = stream
           }
-        }).catch(error => {
-          console.error(error)
-        })
+        }).catch(error => console.error(error))
 
         this.socket.emit("yourID", this.userDetails.userId);
-        Object.keys(this.users).forEach(key => {
-          this.socket.emit("allUsers", key);
-        })
-      }
-    },
-    setVideo2() {
-      if (this.userDetails.userId) {
-        // this.socket.join(this.$route.params.otherUserId);
+        this.socket.emit("allUsers", this.userDetails.userId);
+
         this.socket.on('hey', data => {
-          console.log('hey')
           this.receivingCall = true
           this.caller = data.from
           this.callerSignal = data.signal
         })
       }
-    }
+    },
   },
   watch: {},
   mounted() {
     const setVideo = setInterval(() => {
       if (this.userDetails.userId) {
         this.setVideo()
-        this.setVideo2()
         this.hideSpinner = false
         clearInterval(setVideo)
       } else {
@@ -172,18 +155,10 @@ export default {
   destroyed() {
     if (this.userDetails.userId) {
       console.log('destroy');
-
-      [this.video, this.audio] = [false, false];
-      navigator.mediaDevices.getUserMedia({ video: this.video, audio: this.audio }).then(stream => {
-        this.stream = null
-        console.log(stream)
-        if (this.$refs.userVideo) {
-          this.$refs.userVideo.srcObject = this.stream
-        }
-      }).catch(error => {
-        console.error(error)
-      })
-      // this.setVideo();
+      [ this.video, this.audio ] = [ false, false ];
+      this.stream = null
+      this.$refs.userVideo = null
+      this.$refs.otherUserVideo = null
     }
   }
 }
@@ -200,13 +175,13 @@ export default {
   display: grid
   grid-template-columns: repeat(2, 1fr)
   grid-template-rows: repeat(2, 1fr)
-  //justify-items: center
+//justify-items: center
 
 .video-grid__item
-  //justify-self: stretch
-  //border: 1px solid#000
-  //align-self: stretch
-  //background: #f8f9fa
+//justify-self: stretch
+//border: 1px solid#000
+//align-self: stretch
+//background: #f8f9fa
 
 video
   max-width: 100%

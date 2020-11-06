@@ -26,9 +26,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d8c058d-465e-4c5d-9b8a-f254167a2489" name="Default Changelist" comment="">
+    <list default="true" id="1d8c058d-465e-4c5d-9b8a-f254167a2489" name="Default Changelist" comment="fix gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/videochat-directory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/videochat-directory.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/videochat/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/videochat/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/videochat/src/components/video/VideoChat.vue" beforeDir="false" afterPath="$PROJECT_DIR$/videochat/src/components/video/VideoChat.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,14 +66,18 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -128,6 +134,11 @@
       <workItem from="1604582300603" duration="386000" />
       <workItem from="1604582701861" duration="1715000" />
       <workItem from="1604585165426" duration="2305000" />
+      <workItem from="1604587588282" duration="9315000" />
+      <workItem from="1604647690853" duration="885000" />
+      <workItem from="1604656176416" duration="11000" />
+      <workItem from="1604656189560" duration="5058000" />
+      <workItem from="1604666711126" duration="8956000" />
     </task>
     <task id="LOCAL-00001" summary="advance routing + add video chat component + start doing video chat">
       <created>1600890157229</created>
@@ -171,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604586082181</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix gitignore">
+      <created>1604587885487</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604587885487</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,9 +225,14 @@
     <MESSAGE value="try to customize video chat and add my id" />
     <MESSAGE value="working on custom id in socket.io + add spa routing + stylization + remove and configure some components" />
     <MESSAGE value="add server" />
-    <option name="LAST_COMMIT_MESSAGE" value="add server" />
+    <MESSAGE value="fix gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix gitignore" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="698" y="228" width="846" height="583" key="#JavaScript" timestamp="1604674973116">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="698" y="228" width="846" height="583" key="#JavaScript/0.0.1920.1040@0.0.1920.1040" timestamp="1604674973116" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603906730505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -218,17 +241,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="585" y="87" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1604586079922" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1604584417266">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1604656183479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604584417266" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1604586321467">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604656183479" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1604674878046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604586321467" />
-    <state x="705" y="401" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1604580475136">
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1604674878046" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1604587903749">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="705" y="401" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604580475136" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604587903749" />
+    <state x="705" y="401" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1604587898089">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="705" y="401" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604587898089" />
   </component>
 </project>

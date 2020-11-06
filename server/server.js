@@ -9,51 +9,27 @@ const users = {};
 let yourId = '';
 
 io.on('connection', socket => {
-  // if (!users[yourId]) {
-  //
-  // }
-  users[yourId] = yourId;
-  // console.log(users)
 
   socket.on("yourID", id => {
     yourId = id
-    // console.log(yourId)
   })
 
-  // io.engine.generateId = function (req) {
-  //   // generate a new custom id here
-  //   const getId = setInterval(() => {
-  //     if (yourId) {
-  //       clearInterval(getId)
-  //       console.log(yourId)
-  //       return yourId
-  //     } else {
-  //       console.log('wait')
-  //     }
-  //   }, 2000)
-  // }
-  // socket.on("yourID", (id) => {
-  //     yourId = id
-  //     console.log(yourId)
+  socket.on('allUsers', userId => {
+    users[userId] = socket.id
+    console.log(users)
+  })
+
+  // мой id - ключ
+
+  // socket.on('disconnect', () => {
+  //   delete users[yourId];
   // })
 
-  // io.sockets.emit("allUsers", users);
-  socket.on('allUsers', (user) => {
-    users[user] = user
-  })
-  // console.log(users)
-
-  socket.on('disconnect', () => {
-      delete users[yourId];
-  })
-
   socket.on("callUser", (data) => {
-    console.log(data.userToCall)
-    console.log(data.from)
-    io.to(data.userToCall).emit('hey', { signal: data.signalData, from: data.from })
-    // console.log(io.to(data.userToCall).emit('hey'))
-    // console.log(io.to(data.userToCall))
-    // console.log('new socket id', socket.id)
+    console.log(users)
+    const from = users[data.from]
+    const to = users[data.userToCall]
+    io.to(to).emit('hey', { signal: data.signalData, from: from })
   })
 
   socket.on("acceptCall", (data) => {
